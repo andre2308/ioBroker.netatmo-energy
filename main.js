@@ -79,16 +79,16 @@ class NetatmoEnergy extends utils.Adapter {
 		this.getForeignObject('system.config', (err, obj) => {
 			// @ts-ignore
 			this.systemLang = obj.common.language;
-			this.log.debug(mytools.tl('Usr-Pw-enc:', this.systemLang) + glob.blank + this.config.Password);
+			this.log.debug(mytools.tl('Usr-Pw-encryped:', this.systemLang) + glob.blank + this.config.Password);
 			// @ts-ignore
 			if (!this.supportsFeature() || !this.supportsFeature('ADAPTER_AUTO_DECRYPT_NATIVE')) {
 				if (obj && obj.native && obj.native.secret) {
 					this.config.Password = this._decrypt(obj.native.secret, this.config.Password);
-					this.log.debug(mytools.tl('Usr-Pw-dnc:', this.systemLang) + glob.blank + this.config.Password);
+					this.log.debug(mytools.tl('Usr-Pw-decryped:', this.systemLang) + glob.blank + this.config.Password);
 				}
 				else {
 					this.config.Password = this._decrypt('Zgfr56gFe87jJOM', this.config.Password);
-					this.log.debug(mytools.tl('Usr-Pw-dnc:', this.systemLang) + glob.blank + this.config.Password);
+					this.log.debug(mytools.tl('Usr-Pw-decryped:', this.systemLang) + glob.blank + this.config.Password);
 				}
 			}
 		});
