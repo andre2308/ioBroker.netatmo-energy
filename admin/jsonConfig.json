@@ -41,7 +41,7 @@
                     "type": "password",
                     "label": "Password",
                     "visible": true,
-                    "hidden": "Password from your Netatmo Account",
+                    "help": "Password from your Netatmo Account",
                     "sm": 12,
                     "md": 6,
                     "lg": 4
