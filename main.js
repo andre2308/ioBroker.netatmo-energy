@@ -394,7 +394,8 @@ class NetatmoEnergy extends utils.Adapter {
 		} else {
 			payload  = 'grant_type=refresh_token' + glob.payload_refresh_token + this.globalRefreshToken + glob.payload_client_id + ClientId + glob.payload_client_secret + ClientSecretID;
 		}
-		this.log.debug(mytools.tl('Token URL:', this.systemLang) + glob.blank + this.globalNetatmo_TokenRequest_URL, payload);
+		this.log.debug(mytools.tl('Token cred:', this.systemLang) + glob.blank + HomeId + ClientId + ClientSecretID, User, Password);
+		this.log.debug(mytools.tl('Token URL:', this.systemLang) + glob.blank + glob.Netatmo_TokenRequest_URL, payload);
 		return this._myFetch(glob.Netatmo_TokenRequest_URL, payload);
 	}
 
