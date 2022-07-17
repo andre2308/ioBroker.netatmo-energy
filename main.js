@@ -45,8 +45,6 @@ class NetatmoEnergy extends utils.Adapter {
 		this.mySubscribedStates			= [];
 		this.FetchAbortController		= new abort.AbortController();
 	}
-
-c
 	// DatapointString
 	/**
 	 * @param {any[]} parts
