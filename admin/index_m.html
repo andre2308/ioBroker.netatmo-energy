@@ -50,7 +50,7 @@
 			} else {
 				var value = settings[id];
 				if (id === 'Password') {
-						value = value ? decrypt((typeof systemConfig !== 'undefined' && systemConfig.native && systemConfig.native.secret) || 'Zgfr56gFe87jJOM', value) : '';
+						value = value ? decrypt('Zgfr56gFe87jJOM', value) : '';
 				}
 				// do not call onChange direct, because onChange could expect some arguments
 				$key.val(value).change(function() {
@@ -128,7 +128,7 @@
 			} else {
 				var value = $this.val();
 				if (id === 'Password') {
-					value = value ? encrypt((typeof systemConfig !== 'undefined' && systemConfig.native && systemConfig.native.secret) || 'Zgfr56gFe87jJOM', value) : '';
+					value = value ? encrypt('Zgfr56gFe87jJOM', value) : '';
 				}
 				obj[id] = value;
 			}
