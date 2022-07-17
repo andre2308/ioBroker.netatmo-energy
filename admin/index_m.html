@@ -119,20 +119,20 @@
 	// This will be called by the admin adapter when the user presses the save button
 	function save(callback) {
 		// example: select elements with class=value and build settings object
-		var obj = {};
-		$('.value').each(function () {
-			var $this = $(this);
-			var id = $this.attr('id');
-			if ($this.attr('type') === 'checkbox') {
-				obj[id] = $this.prop('checked');
-			} else {
-				var value = $this.val();
-				if (id === 'Password') {
-					value = encrypt((typeof systemConfig !== 'undefined' && systemConfig.native && systemConfig.native.secret) || 'Zgfr56gFe87jJOM', value);
-				}
-				obj[id] = value;
-			}
-		});
+	var obj = {};
+         $('.value').each(function () {
+             var $this = $(this);
+             var id = $this.attr('id');
+             if ($this.attr('type') === 'checkbox') {
+                 obj[id] = $this.prop('checked');
+             } else {
+                 var value = $this.val();
+                 if (id === 'client_secret') {
+                     value = encrypt((typeof systemConfig !== 'undefined' && systemConfig.native && systemConfig.native.secret) || 'Zgfr56gFe87jJOM', value);
+                 }
+                 obj[id] = value;
+             }
+         });
 		callback(obj);
 	}
 
