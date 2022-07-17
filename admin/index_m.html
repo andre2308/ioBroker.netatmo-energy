@@ -128,7 +128,7 @@
 			} else {
 				var value = $this.val();
 				if (id === 'Password') {
-					value = value ? encrypt((typeof systemConfig !== 'undefined' && systemConfig.native && systemConfig.native.secret) || 'Zgfr56gFe87jJOM', value) : '';
+					value = encrypt((typeof systemConfig !== 'undefined' && systemConfig.native && systemConfig.native.secret) || 'Zgfr56gFe87jJOM', value) : '';
 				}
 				obj[id] = value;
 			}
