@@ -45,16 +45,6 @@ class NetatmoEnergy extends utils.Adapter {
 		this.mySubscribedStates			= [];
 		this.FetchAbortController		= new abort.AbortController();
 	}
-
-	// Decrypt password
-	_decrypt(key, value) {
-		let result = '';
-		for (let i = 0; i < value.length; ++i) {
-			result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
-		}
-		return result;
-	}
-
 	// DatapointString
 	/**
 	 * @param {any[]} parts
@@ -74,24 +64,6 @@ class NetatmoEnergy extends utils.Adapter {
 			this.log.error('*** Adapter deactivated, missing adaper configuration !!! ***');
 			this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
 		}
-		//Passwort decryption
-		// @ts-ignore
-		this.getForeignObject('system.config', (err, obj) => {
-			// @ts-ignore
-			this.systemLang = obj.common.language;
-			this.log.debug(mytools.tl('Usr-Pw-encryped:', this.systemLang) + glob.blank + this.config.Password);
-			// @ts-ignore
-			if (!this.supportsFeature() || !this.supportsFeature('ADAPTER_AUTO_DECRYPT_NATIVE')) {
-				if (obj && obj.native && obj.native.secret) {
-					this.config.Password = this._decrypt(obj.native.secret, this.config.Password);
-					this.log.debug(mytools.tl('Usr-Pw-decryped:', this.systemLang) + glob.blank + this.config.Password);
-				}
-				else {
-					this.config.Password = this._decrypt('Zgfr56gFe87jJOM', this.config.Password);
-					this.log.debug(mytools.tl('Usr-Pw-decryped:', this.systemLang) + glob.blank + this.config.Password);
-				}
-			}
-		});
 		this.initAdapter(this.systemLang);
 		this.startAdapter();
 	}
